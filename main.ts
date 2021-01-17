@@ -1,7 +1,7 @@
 const { app, BrowserWindow } = require('electron')
 var os = require('os')
 console.log('hallo')
-//var git = require('git-utils')
+var git = require('git-utils')
 /*
 
 
@@ -18,7 +18,7 @@ function createWindow() {
             webPreferences: {
                 nodeIntegration: true
             },
-            icon: 'img/spotlight-47-Spotlight-icon.png'
+            //icon: 'img/spotlight-47-Spotlight-icon.png'
         })
         win.webContents.openDevTools();
     win.loadFile('index.html')
