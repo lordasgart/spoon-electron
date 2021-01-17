@@ -1,29 +1,35 @@
-const { app, BrowserWindow } = require('electron')
-var os = require('os')
+var _a = require('electron'), app = _a.app, BrowserWindow = _a.BrowserWindow;
+var os = require('os');
+console.log('hallo');
+//var git = require('git-utils')
+/*
 
+
+
+var repository = git.open('/home/lordasgart/Projects/spoon-electron')
+
+var head = repository.getHead()
+console.log(head)*/
 function createWindow() {
-    const win = new BrowserWindow({
-            width: 720,
-            height: 564,
-            webPreferences: {
-                nodeIntegration: true
-            },
-            icon: 'img/spotlight-47-Spotlight-icon.png'
-        })
-        win.webContents.openDevTools();
-    win.loadFile('index.html')
+    var win = new BrowserWindow({
+        width: 720,
+        height: 564,
+        webPreferences: {
+            nodeIntegration: true
+        },
+        icon: 'img/spotlight-47-Spotlight-icon.png'
+    });
+    win.webContents.openDevTools();
+    win.loadFile('index.html');
 }
-
-app.whenReady().then(createWindow)
-
-app.on('window-all-closed', () => {
+app.whenReady().then(createWindow);
+app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') {
-        app.quit()
+        app.quit();
     }
-})
-
-app.on('activate', () => {
+});
+app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) {
-        createWindow()
+        createWindow();
     }
-})
+});
