@@ -2,14 +2,12 @@ const { app, BrowserWindow } = require('electron')
 var os = require('os')
 console.log('hallo')
 var git = require('git-utils')
-/*
-
-
-
-var repository = git.open('/home/lordasgart/Projects/spoon-electron')
-
+var repository = git.open('C:\\Users\\lordasgart\\Projects\\spoon-electron')
 var head = repository.getHead()
-console.log(head)*/
+console.log(head)
+/*
+var repository = git.open('/home/lordasgart/Projects/spoon-electron')
+*/
 
 function createWindow() {
     const win = new BrowserWindow({
