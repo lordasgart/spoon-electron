@@ -11,14 +11,14 @@ var repository = git.open('/home/lordasgart/Projects/spoon-electron')
 
 function createWindow() {
     const win = new BrowserWindow({
-            width: 720,
-            height: 564,
-            webPreferences: {
-                nodeIntegration: true
-            },
-            //icon: 'img/spotlight-47-Spotlight-icon.png'
-        })
-        win.webContents.openDevTools();
+        width: 720,
+        height: 564,
+        webPreferences: {
+            nodeIntegration: true
+        },
+        icon: './img/spoon-Cook-Book-icon.png'
+    })
+    win.webContents.openDevTools();
     win.loadFile('index.html')
 }
 

@@ -13,6 +13,7 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true
         },
+        icon: './img/spoon-Cook-Book-icon.png'
     });
     win.webContents.openDevTools();
     win.loadFile('index.html');
