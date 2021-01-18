@@ -13,7 +13,8 @@
             "<node_internals>/**"
         ],
         "type": "pwa-node",        
-        "preLaunchTask": "Compile TypeScript"
+        "preLaunchTask": "Compile TypeScript",
+        "outputCapture": "std"
     }
     ]
 }
