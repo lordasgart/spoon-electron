@@ -1,12 +1,14 @@
 {
-    "compilerOptions": {
+  "extends": "@tsconfig/node12/tsconfig.json",
+  "compilerOptions": {
     "lib": [
-        "dom",
-        "esnext.asynciterable"
-      ],
-
-    "sourceMap": true,
+      "dom",
+      "esnext.asynciterable"
+    ],
+    "baseUrl": ".",
+    "outDir": ".",
     "moduleResolution": "node",
+    "sourceMap": true,
     "removeComments": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -20,9 +22,12 @@
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "resolveJsonModule": true,
-    "baseUrl": "."
-    },
-    "extends": "@tsconfig/node12/tsconfig.json",
-    "include": ["src/**/*"]
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
