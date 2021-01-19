@@ -11,7 +11,8 @@ function createWindow() {
         width: 720,
         height: 564,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            contextIsolation: true
         },
         icon: './img/spoon-Cook-Book-icon.png'
     });
