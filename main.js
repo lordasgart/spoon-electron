@@ -1,5 +1,6 @@
 "use strict";
 const { app, BrowserWindow } = require('electron');
+const { ipcMain } = require('electron');
 var os = require('os');
 console.log('hallo');
 var git = require('git-utils');
@@ -28,5 +29,10 @@ app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
         createWindow();
     }
+});
+ipcMain.handle('perform-action', (event, args) => {
+    console.log(event);
+    console.log(args);
+    return head;
 });
 //# sourceMappingURL=main.js.map

@@ -1,9 +1,11 @@
 "use strict";
+const { ipcRenderer } = require('electron');
 const openRepoButton = document.getElementById('openRepoButton');
 const gitResetButton = document.getElementById('gitResetButton');
 if (gitResetButton) {
-    gitResetButton.addEventListener('click', () => {
-        alert('git reset button clicked');
+    gitResetButton.addEventListener('click', async () => {
+        const head = await ipcRenderer.invoke('perform-action', 123);
+        alert('git reset button clicked: ' + head);
     });
 }
 //# sourceMappingURL=renderer.js.map

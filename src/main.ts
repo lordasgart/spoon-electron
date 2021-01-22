@@ -1,4 +1,6 @@
 const { app, BrowserWindow } = require('electron')
+// In the Main process
+const { ipcMain } = require('electron')
 var os = require('os')
 console.log('hallo')
 var git = require('git-utils')
@@ -35,3 +37,9 @@ app.on('activate', () => {
         createWindow()
     }
 })
+
+ipcMain.handle('perform-action', (event: any, args: any) => {
+    console.log(event)
+    console.log(args)
+    return head
+  })
