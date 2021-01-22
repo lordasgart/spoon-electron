@@ -43,7 +43,7 @@ if (gitSetUserButton) {
         let username = usernameInput.value
         let useremail = useremailInput.value
         await ipcRenderer.invoke('git-setuser-action', username, useremail)
-    }
+    })
 }
 //#endregion
 

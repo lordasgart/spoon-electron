@@ -2,6 +2,7 @@
 const { ipcRenderer } = require('electron');
 const openRepoButton = document.getElementById('openRepoButton');
 const gitResetButton = document.getElementById('gitResetButton');
+const gitSetUserButton = document.getElementById('gitSetUserButton');
 const repoPathElement = document.getElementById('repoPath');
 const headElement = document.getElementById('head');
 const usernameInput = document.getElementById('username');
@@ -23,6 +24,13 @@ if (gitResetButton) {
     gitResetButton.addEventListener('click', async () => {
         const head = await ipcRenderer.invoke('git-reset-action', 123);
         alert('git reset button clicked: ' + head);
+    });
+}
+if (gitSetUserButton) {
+    gitSetUserButton.addEventListener('click', async () => {
+        let username = usernameInput.value;
+        let useremail = useremailInput.value;
+        await ipcRenderer.invoke('git-setuser-action', username, useremail);
     });
 }
 async function setHeadElement() {
