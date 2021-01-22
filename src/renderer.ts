@@ -1,9 +1,13 @@
-// In the Renderer process
+//#region require
 const { ipcRenderer } = require('electron')
+//#endregion
 
+//#region elements
 const openRepoButton = document.getElementById('openRepoButton')
 const gitResetButton = document.getElementById('gitResetButton')
+//#endregion
 
+//#region click
 if (openRepoButton) {
     openRepoButton.addEventListener('click', async () => {
         const dir = await ipcRenderer.invoke('get-directory-action')
@@ -19,5 +23,4 @@ if (gitResetButton) {
         alert('git reset button clicked: ' + head)
     })
 }
-
-
+//#endregion

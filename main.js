@@ -1,7 +1,5 @@
 "use strict";
-const { app, BrowserWindow } = require('electron');
-const { ipcMain } = require('electron');
-const { dialog } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const os = require('os');
 const git = require('git-utils');
 let win;
