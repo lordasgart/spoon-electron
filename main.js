@@ -5,6 +5,7 @@ const git = require('git-utils');
 let win;
 let repository = git.open('.');
 let head = repository.getHead();
+let path = repository.getPath();
 let username = repository.getConfigValue('user.name');
 let useremail = repository.getConfigValue('user.email');
 function createWindow() {
@@ -42,9 +43,13 @@ ipcMain.handle('open-repo-action', (event, dir) => {
     console.log(event);
     repository = git.open(dir);
     head = repository.getHead();
+    path = repository.getPath();
 });
 ipcMain.handle('get-head-action', () => {
     return head;
+});
+ipcMain.handle('get-path-action', () => {
+    return path;
 });
 ipcMain.handle('get-username-action', () => {
     return username;
@@ -62,6 +67,6 @@ ipcMain.handle('git-setuser-action', (event, usernamearg, useremailarg) => {
 ipcMain.handle('git-reset-action', (event, args) => {
     console.log(event);
     console.log(args);
-    return head;
+    repository.checkoutHead(path);
 });
 //# sourceMappingURL=main.js.map

@@ -7,6 +7,7 @@ const openRepoButton = document.getElementById('openRepoButton')
 const gitResetButton = document.getElementById('gitResetButton')
 const gitSetUserButton = document.getElementById('gitSetUserButton')
 
+const repoDirElement = document.getElementById('repoDir')
 const repoPathElement = document.getElementById('repoPath')
 const headElement = document.getElementById('head')
 
@@ -16,6 +17,7 @@ const useremailInput = document.getElementById('useremail') as HTMLInputElement
 
 //#region render on startup
 setHeadElement()
+setPathElement()
 setUsername()
 setUseremail()
 //#endregion
@@ -24,9 +26,13 @@ setUseremail()
 if (openRepoButton) {
     openRepoButton.addEventListener('click', async () => {
         const dir = await ipcRenderer.invoke('get-directory-action')
+        const path = await ipcRenderer.invoke('get-path-action')
         await ipcRenderer.invoke('open-repo-action', dir)
+        if (repoDirElement) {
+            repoDirElement.innerHTML = dir
+        }
         if (repoPathElement) {
-            repoPathElement.innerHTML = dir
+            repoPathElement.innerHTML = path
         }
         await setHeadElement()
     })
@@ -51,6 +57,12 @@ async function setHeadElement() {
     const head = await ipcRenderer.invoke('get-head-action')
     if (headElement) {
         headElement.innerHTML = head
+    }
+}
+async function setPathElement() {
+    const path = await ipcRenderer.invoke('get-path-action')
+    if (repoPathElement) {
+        repoPathElement.innerHTML = path
     }
 }
 async function setUsername() {
