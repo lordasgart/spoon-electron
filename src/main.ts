@@ -11,6 +11,8 @@ let win: { webContents: { openDevTools: () => void; }; loadFile: (arg0: string) 
 //#region let - repository specific
 let repository = git.open('.')
 let head = repository.getHead()
+let username = repository.getConfigValue('user.name')
+let useremail = repository.getConfigValue('user.email')
 //#endregion
 
 //#region app
@@ -60,6 +62,14 @@ ipcMain.handle('open-repo-action', (event: any, dir: string) => {
 
 ipcMain.handle('get-head-action', () => {
     return head
+})
+
+ipcMain.handle('get-username-action', () => {
+    return username
+})
+
+ipcMain.handle('get-useremail-action', () => {
+    return useremail
 })
 
 ipcMain.handle('git-reset-action', (event: any, args: any) => {

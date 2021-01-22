@@ -5,6 +5,8 @@ const git = require('git-utils');
 let win;
 let repository = git.open('.');
 let head = repository.getHead();
+let username = repository.getConfigValue('user.name');
+let useremail = repository.getConfigValue('user.email');
 function createWindow() {
     win = new BrowserWindow({
         width: 720,
@@ -43,6 +45,12 @@ ipcMain.handle('open-repo-action', (event, dir) => {
 });
 ipcMain.handle('get-head-action', () => {
     return head;
+});
+ipcMain.handle('get-username-action', () => {
+    return username;
+});
+ipcMain.handle('get-useremail-action', () => {
+    return useremail;
 });
 ipcMain.handle('git-reset-action', (event, args) => {
     console.log(event);

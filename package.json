@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "@electron/typescript-definitions": "^8.8.0",
-    "@khai96x/git-utils": "0.0.12",
     "git-utils": "^5.7.1"
   }
 }
