@@ -1,3 +1,9 @@
+const openRepoButton = document.getElementById('openRepoButton')
+const gitResetButton = document.getElementById('gitResetButton')
 
-
-const openRepoButton = document.getElementById('openRepoButton');
+if (gitResetButton)
+{
+    gitResetButton.addEventListener('click', () => {
+        alert('git reset button clicked')
+    })
+}
