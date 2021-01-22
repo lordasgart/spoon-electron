@@ -8,7 +8,7 @@ const git = require('git-utils')
 let win: { webContents: { openDevTools: () => void; }; loadFile: (arg0: string) => void; }
 //#endregion
 
-//#region let - repository
+//#region let - repository specific
 let repository = git.open('.')
 let head = repository.getHead()
 //#endregion
@@ -56,12 +56,16 @@ ipcMain.handle('open-repo-action', (event: any, dir: string) => {
     console.log(event)
     repository = git.open(dir)
     head = repository.getHead()
-    return head;
+})
+
+ipcMain.handle('get-head-action', () => {
+    return head
 })
 
 ipcMain.handle('git-reset-action', (event: any, args: any) => {
     console.log(event)
     console.log(args)
     return head
+    //TBD
 })
 //#endregion

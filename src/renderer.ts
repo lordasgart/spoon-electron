@@ -5,15 +5,24 @@ const { ipcRenderer } = require('electron')
 //#region elements
 const openRepoButton = document.getElementById('openRepoButton')
 const gitResetButton = document.getElementById('gitResetButton')
+
+const repoPathElement = document.getElementById('repoPath')
+const headElement = document.getElementById('head')
+//#endregion
+
+//#region render on startup
+setHeadElement();
 //#endregion
 
 //#region click
 if (openRepoButton) {
     openRepoButton.addEventListener('click', async () => {
         const dir = await ipcRenderer.invoke('get-directory-action')
-        alert('openRepoButton: ' + dir)
-        const head = await ipcRenderer.invoke('open-repo-action', dir)
-        alert('openRepoButton head: ' + head)
+        await ipcRenderer.invoke('open-repo-action', dir)
+        if (repoPathElement) {
+            repoPathElement.innerHTML = dir
+        }
+        await setHeadElement()
     })
 }
 
@@ -22,5 +31,14 @@ if (gitResetButton) {
         const head = await ipcRenderer.invoke('git-reset-action', 123)
         alert('git reset button clicked: ' + head)
     })
+}
+//#endregion
+
+//#region helper
+async function setHeadElement() {
+    const head = await ipcRenderer.invoke('get-head-action')
+    if (headElement) {
+        headElement.innerHTML = head
+    }
 }
 //#endregion

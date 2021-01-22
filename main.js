@@ -40,6 +40,8 @@ ipcMain.handle('open-repo-action', (event, dir) => {
     console.log(event);
     repository = git.open(dir);
     head = repository.getHead();
+});
+ipcMain.handle('get-head-action', () => {
     return head;
 });
 ipcMain.handle('git-reset-action', (event, args) => {

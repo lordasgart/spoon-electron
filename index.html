@@ -4,21 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Spoon</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval';" />
+    <!--<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval';" />-->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <script type='text/javascript' src='bower_components/knockout/dist/knockout.js'></script>
 </head>
 
 <body>
     <h1>Spoon</h1>
+    <div id="nodeVersion"><script>document.write(process.versions.node)</script></div>
+
+    <h2 id="repoPath">.</h2>
+    <h3 id="head"></h3>
+
     <button id="openRepoButton">Open Repository</button>
     <button id="gitResetButton">git "reset"</button>
-    The name of the clown is <span data-bind="text: personName"></span>
+    
     <script src="renderer.js"></script>
+    <!--
     <script src="repositoryViewModel.js"></script>
     <script>
         ko.applyBindings(repositoryViewModel);
     </script>
+    -->
 </body>
 
 </html>
