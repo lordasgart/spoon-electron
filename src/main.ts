@@ -41,15 +41,20 @@ app.on('activate', () => {
     }
 })
 
-ipcMain.handle('open-repo-action', async (event: any, args: any) => {
-    console.log(event)
-    console.log(args)
-
+ipcMain.handle('get-directory-action', async () => {
     var result = await dialog.showOpenDialog(win, {
         properties: ['openDirectory']
-    });
+    })
     var dir = result.filePaths[0]
-    console.log(dir);
+    console.log(dir)
+    return dir
+})
+
+ipcMain.handle('open-repo-action', (event: any, dir: string) => {
+    console.log(event)
+    repository = git.open(dir)
+    head = repository.getHead()
+    return head;
 })
 
 ipcMain.handle('git-reset-action', (event: any, args: any) => {
