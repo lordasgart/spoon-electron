@@ -30,7 +30,7 @@ app.on('activate', () => {
         createWindow();
     }
 });
-ipcMain.handle('perform-action', (event, args) => {
+ipcMain.handle('git-reset-action', (event, args) => {
     console.log(event);
     console.log(args);
     return head;

@@ -38,7 +38,7 @@ app.on('activate', () => {
     }
 })
 
-ipcMain.handle('perform-action', (event: any, args: any) => {
+ipcMain.handle('git-reset-action', (event: any, args: any) => {
     console.log(event)
     console.log(args)
     return head
