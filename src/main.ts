@@ -1,19 +1,22 @@
+//#region require
 const { app, BrowserWindow } = require('electron')
-// In the Main process
 const { ipcMain } = require('electron')
 const { dialog } = require('electron')
-var os = require('os')
-console.log('hallo')
-var git = require('git-utils')
-var repository = git.open('.')
-var head = repository.getHead()
-console.log(head)
-/*
-var repository = git.open('/home/lordasgart/Projects/spoon-electron')
-*/
 
+const os = require('os')
+const git = require('git-utils')
+//#endregion
+
+//#region let
 let win: { webContents: { openDevTools: () => void; }; loadFile: (arg0: string) => void; }
+//#endregion
 
+//#region let - repository
+let repository = git.open('.')
+let head = repository.getHead()
+//#endregion
+
+//#region app
 function createWindow() {
     win = new BrowserWindow({
         width: 720,
@@ -40,7 +43,9 @@ app.on('activate', () => {
         createWindow()
     }
 })
+//#endregion
 
+//#region ipcMain
 ipcMain.handle('get-directory-action', async () => {
     var result = await dialog.showOpenDialog(win, {
         properties: ['openDirectory']
@@ -62,3 +67,4 @@ ipcMain.handle('git-reset-action', (event: any, args: any) => {
     console.log(args)
     return head
 })
+//#endregion

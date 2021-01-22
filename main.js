@@ -2,13 +2,11 @@
 const { app, BrowserWindow } = require('electron');
 const { ipcMain } = require('electron');
 const { dialog } = require('electron');
-var os = require('os');
-console.log('hallo');
-var git = require('git-utils');
-var repository = git.open('.');
-var head = repository.getHead();
-console.log(head);
+const os = require('os');
+const git = require('git-utils');
 let win;
+let repository = git.open('.');
+let head = repository.getHead();
 function createWindow() {
     win = new BrowserWindow({
         width: 720,
