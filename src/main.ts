@@ -83,7 +83,6 @@ ipcMain.handle('git-setuser-action', (event: any, usernamearg: any, useremailarg
 ipcMain.handle('git-reset-action', (event: any, args: any) => {
     console.log(event)
     console.log(args)
-    return head
-    //TBD
+    repository.checkoutHead('.')
 })
 //#endregion

@@ -34,8 +34,7 @@ if (openRepoButton) {
 
 if (gitResetButton) {
     gitResetButton.addEventListener('click', async () => {
-        const head = await ipcRenderer.invoke('git-reset-action', 123)
-        alert('git reset button clicked: ' + head)
+        await ipcRenderer.invoke('git-reset-action')
     })
 }
 if (gitSetUserButton) {
