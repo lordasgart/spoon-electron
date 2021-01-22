@@ -72,6 +72,15 @@ ipcMain.handle('get-useremail-action', () => {
     return useremail
 })
 
+ipcMain.handle('git-setuser-action', (event: any, args: any) => {
+    console.log(event)
+    console.log(args)
+    let username = args[0]
+    let useremail = args[1]
+    repository.setConfigValue('user.name', username)
+    repository.setConfigValue('user.email', useremail)
+})
+
 ipcMain.handle('git-reset-action', (event: any, args: any) => {
     console.log(event)
     console.log(args)
