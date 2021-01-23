@@ -1,7 +1,33 @@
+body {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: small;
+}
+
+input, button {
+  font-size: medium;
+}
+
 @media (prefers-color-scheme: dark) {
-    body { background:  #333; color: white; }
+  body {
+    background: #232323;
+    color: #ccc;
   }
-  
-  @media (prefers-color-scheme: light) {
-    body { background:  #ddd; color: black; }
+  input, button {
+    color: #ccc;
   }
+  input {
+    background-color: #000;
+    color: #ccc;
+  }
+  button {
+    background-color: #333;
+    color: #ccc;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: #ddd;
+    color: black;
+  }
+}

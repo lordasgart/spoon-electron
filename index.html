@@ -11,21 +11,38 @@
 </head>
 
 <body>
-    <h1>Spoon</h1>
-    <div id="nodeVersion"><script>document.write(process.versions.node)</script></div>
+    <h1>Repository</h1>
 
-    <h2 id="repoDir">.</h2>
-    <h2 id="repoPath">.</h2>
-    <h3 id="head"></h3>
+    <table>
+        <tr>
+            <td>Opened path</td>
+            <td><span id="repoDir">.</span></td>
+            <td><button id="openRepoButton">Open Repository</button></td>
+        </tr>
+        <tr>
+            <td>Path to .git folder</td>
+            <td><span id="repoPath">.</span></td>
+        </tr>
+        <tr>
+            <td>Current head</td>
+            <td><span id="head"></span></td>
+        </tr>
+        <tr>
+            <td>user.name</td>
+            <td><input type="text" id="username"></input></td>
+            <td rowspan="2"><button id="gitSetUserButton">Set Git User</button></td>
+        </tr>
+        <tr>
+            <td>user.email</td>
+            <td><input type="text" id="useremail"></input></td>
+        </tr>
+    </table>
 
-    <button id="openRepoButton">Open Repository</button>
-    
-    <input type="text" id="username"></input>
-    <input type="text" id="useremail"></input>
 
-    <button id="gitSetUserButton">Set Git User</button>
-    
+
     <button id="gitResetButton">git "reset"</button>
+
+
 
     <script src="renderer.js"></script>
     <!--
@@ -34,6 +51,20 @@
         ko.applyBindings(repositoryViewModel);
     </script>
     -->
+
+    <footer>
+        <table>
+            <tr>
+                <td>Node.js version:</td>
+                <td>
+                    <div id="nodeVersion">
+                        <script>document.write(process.versions.node)</script>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </footer>
+
 </body>
 
 </html>

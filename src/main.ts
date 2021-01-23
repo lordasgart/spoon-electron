@@ -27,7 +27,7 @@ function createWindow() {
         },
         icon: './img/spoon-Cook-Book-icon.png'
     })
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
     win.loadFile('index.html')
 }
 
