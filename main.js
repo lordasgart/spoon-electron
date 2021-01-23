@@ -44,6 +44,8 @@ ipcMain.handle('open-repo-action', (event, dir) => {
     repository = git.open(dir);
     head = repository.getHead();
     path = repository.getPath();
+    username = repository.getConfigValue('user.name');
+    useremail = repository.getConfigValue('user.email');
 });
 ipcMain.handle('get-head-action', () => {
     return head;
@@ -67,6 +69,5 @@ ipcMain.handle('git-setuser-action', (event, usernamearg, useremailarg) => {
 ipcMain.handle('git-reset-action', (event, args) => {
     console.log(event);
     console.log(args);
-    repository.checkoutHead(path);
 });
 //# sourceMappingURL=main.js.map

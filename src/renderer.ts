@@ -26,21 +26,21 @@ setUseremail()
 if (openRepoButton) {
     openRepoButton.addEventListener('click', async () => {
         const dir = await ipcRenderer.invoke('get-directory-action')
-        const path = await ipcRenderer.invoke('get-path-action')
         await ipcRenderer.invoke('open-repo-action', dir)
         if (repoDirElement) {
             repoDirElement.innerHTML = dir
         }
-        if (repoPathElement) {
-            repoPathElement.innerHTML = path
-        }
         await setHeadElement()
+        await setPathElement()
+        await setUsername()
+        await setUseremail()
     })
 }
 
 if (gitResetButton) {
     gitResetButton.addEventListener('click', async () => {
         await ipcRenderer.invoke('git-reset-action')
+        alert('Do not trash, always stash!')
     })
 }
 if (gitSetUserButton) {
@@ -48,6 +48,7 @@ if (gitSetUserButton) {
         let username = usernameInput.value
         let useremail = useremailInput.value
         await ipcRenderer.invoke('git-setuser-action', username, useremail)
+        alert('User info saved successfully!')
     })
 }
 //#endregion

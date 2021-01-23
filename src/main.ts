@@ -14,6 +14,7 @@ let head = repository.getHead()
 let path = repository.getPath()
 let username = repository.getConfigValue('user.name')
 let useremail = repository.getConfigValue('user.email')
+//TODO: split declaration and extract as own method and use this in open-repo-action too
 //#endregion
 
 //#region app
@@ -57,9 +58,12 @@ ipcMain.handle('get-directory-action', async () => {
 
 ipcMain.handle('open-repo-action', (event: any, dir: string) => {
     console.log(event)
+
     repository = git.open(dir)
     head = repository.getHead()
     path = repository.getPath()
+    username = repository.getConfigValue('user.name')
+    useremail = repository.getConfigValue('user.email')
 })
 
 ipcMain.handle('get-head-action', () => {
@@ -89,6 +93,8 @@ ipcMain.handle('git-setuser-action', (event: any, usernamearg: any, useremailarg
 ipcMain.handle('git-reset-action', (event: any, args: any) => {
     console.log(event)
     console.log(args)
-    repository.checkoutHead(path)
+    //repository.checkoutHead(path)
+    //TODO: This tool will always stash with some trash name like "trash-20210123062659"
+    //TODO: Introduce "Trash bin" for "trash"ed stashes
 })
 //#endregion
