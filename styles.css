@@ -18,7 +18,11 @@ td:nth-child(1) {
   padding-right: 6px;
 }
 
-td:nth-child(1):after {
+td:nth-child(2) {
+  padding-left: 6px;
+}
+
+tr:not(:nth-child(1)) td:nth-child(1):after {
   content: ":";
 }
 
@@ -27,7 +31,7 @@ td:nth-child(1):after {
   background-color: #232323;
 }
 
-tr:nth-child(odd) td:nth-child(1) {
+tr:nth-child(even) td:nth-child(2) {
   background-color: #444;
 }
 
@@ -62,14 +66,21 @@ footer {
 input {
   font-family: monospace;
   border-style: solid;
+  margin-left: -6px;
   padding-left: 6;
   padding-right: 0;
-  width: calc( 100% - 4px - 6px);
+  /* width: calc( 100% - 4px - 6px); */
+  width: calc( 100% - 4px);
 }
 
 button {
   border-style: solid;
   width: 100%;
+  display: inline;
+}
+
+#openRepoButton {
+  /* width: calc(100% + 6px); */
 }
 
 @media (prefers-color-scheme: dark) {
