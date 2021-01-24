@@ -29,18 +29,20 @@
         </tr>
         <tr>
             <td>user.name</td>
-            <td><input type="text" id="username"></input></td>
+            <td><input type="text" id="username" autocomplete="on" autocorrect="off" autocapitalize="off"
+                    spellcheck="false"></input></td>
             <td rowspan="2"><button id="gitSetUserButton">Set Git User</button></td>
         </tr>
         <tr>
             <td>user.email</td>
-            <td><input type="text" id="useremail"></input></td>
+            <td><input type="text" id="useremail" autocomplete="on" autocorrect="off" autocapitalize="off"
+                    spellcheck="false"></input></td>
         </tr>
     </table>
 
 
 
-    <button id="gitResetButton">git "reset"</button>
+    <!-- <button id="gitResetButton">git "reset"</button> -->
 
 
 
@@ -53,16 +55,13 @@
     -->
 
     <footer>
-        <table>
-            <tr>
-                <td>Node.js version:</td>
-                <td>
-                    <div id="nodeVersion">
-                        <script>document.write(process.versions.node)</script>
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <div id="footercontent">
+            <span id="connectionstatus">&gt;&lt;</span>
+            <span>Node.js version:</span>
+            <span id="nodeVersion">
+                <script>document.write(process.versions.node)</script>
+            </span>
+        </div>
     </footer>
 
 </body>
