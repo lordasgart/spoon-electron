@@ -13,6 +13,8 @@ const headElement = document.getElementById('head')
 
 const usernameInput = document.getElementById('username') as HTMLInputElement
 const useremailInput = document.getElementById('useremail') as HTMLInputElement
+
+const statusElement = document.getElementById('status')
 //#endregion
 
 //#region render on startup
@@ -20,6 +22,7 @@ setHeadElement()
 setPathElement()
 setUsername()
 setUseremail()
+setStatus()
 //#endregion
 
 //#region click
@@ -34,6 +37,7 @@ if (openRepoButton) {
         await setPathElement()
         await setUsername()
         await setUseremail()
+        await setStatus()
     })
 }
 
@@ -76,6 +80,12 @@ async function setUseremail() {
     if (useremailInput) {
         const useremail = await ipcRenderer.invoke('get-useremail-action')
         useremailInput.value = useremail;
+    }
+}
+async function setStatus() {
+    if (statusElement) {
+        const repostatus = await ipcRenderer.invoke('git-getstatus-action')
+        statusElement.innerHTML = repostatus;
     }
 }
 //#endregion

@@ -8,10 +8,12 @@ const repoPathElement = document.getElementById('repoPath');
 const headElement = document.getElementById('head');
 const usernameInput = document.getElementById('username');
 const useremailInput = document.getElementById('useremail');
+const statusElement = document.getElementById('status');
 setHeadElement();
 setPathElement();
 setUsername();
 setUseremail();
+setStatus();
 if (openRepoButton) {
     openRepoButton.addEventListener('click', async () => {
         const dir = await ipcRenderer.invoke('get-directory-action');
@@ -23,6 +25,7 @@ if (openRepoButton) {
         await setPathElement();
         await setUsername();
         await setUseremail();
+        await setStatus();
     });
 }
 if (gitResetButton) {
@@ -61,6 +64,12 @@ async function setUseremail() {
     if (useremailInput) {
         const useremail = await ipcRenderer.invoke('get-useremail-action');
         useremailInput.value = useremail;
+    }
+}
+async function setStatus() {
+    if (statusElement) {
+        const repostatus = await ipcRenderer.invoke('git-getstatus-action');
+        statusElement.innerHTML = repostatus;
     }
 }
 //# sourceMappingURL=renderer.js.map

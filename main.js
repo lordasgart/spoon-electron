@@ -8,6 +8,7 @@ let head = repository.getHead();
 let path = repository.getPath();
 let username = repository.getConfigValue('user.name');
 let useremail = repository.getConfigValue('user.email');
+let repostatus = repository.getStatus();
 function createWindow() {
     win = new BrowserWindow({
         width: 720,
@@ -64,6 +65,9 @@ ipcMain.handle('git-setuser-action', (event, usernamearg, useremailarg) => {
     let useremail = useremailarg;
     repository.setConfigValue('user.name', username);
     repository.setConfigValue('user.email', useremail);
+});
+ipcMain.handle('git-getstatus-action', () => {
+    return repostatus;
 });
 ipcMain.handle('git-reset-action', (event, args) => {
     console.log(event);

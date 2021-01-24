@@ -14,6 +14,7 @@ let head = repository.getHead()
 let path = repository.getPath()
 let username = repository.getConfigValue('user.name')
 let useremail = repository.getConfigValue('user.email')
+let repostatus = repository.getStatus()
 //TODO: split declaration and extract as own method and use this in open-repo-action too
 //#endregion
 
@@ -88,6 +89,10 @@ ipcMain.handle('git-setuser-action', (event: any, usernamearg: any, useremailarg
     let useremail = useremailarg
     repository.setConfigValue('user.name', username)
     repository.setConfigValue('user.email', useremail)
+})
+
+ipcMain.handle('git-getstatus-action', () => {
+    return repostatus
 })
 
 ipcMain.handle('git-reset-action', (event: any, args: any) => {
