@@ -4,14 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <title>Spoon</title>
+    <!--<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval';" />-->
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
     <link rel="stylesheet" type="text/css" href="./styles.css">
+    <script type='text/javascript' src='bower_components/knockout/dist/knockout.js'></script>
 </head>
 
 <body>
-    <h1>Spoon</h1>
-    <button id="openRepoButton">Open Repository</button>
+    <h1>Repository</h1>
+
+    <table>
+        <tr>
+            <th><button id="openRepoButton">Open Repository</button></th>
+            <th><span id="repoDir">.</span></th>
+        </tr>
+        <tr>
+            <td>.git folder</td>
+            <td><span id="repoPath">.</span></td>
+        </tr>
+        <tr>
+            <td>head</td>
+            <td><span id="head"></span></td>
+        </tr>
+        <tr>
+            <td>user.name</td>
+            <td><input type="text" id="username" autocomplete="on" autocorrect="off" autocapitalize="off"
+                    spellcheck="false"></input></td>
+            <td rowspan="2"><button id="gitSetUserButton">Set Git User</button></td>
+        </tr>
+        <tr>
+            <td>user.email</td>
+            <td><input type="text" id="useremail" autocomplete="on" autocorrect="off" autocapitalize="off"
+                    spellcheck="false"></input></td>
+        </tr>
+        <tr>
+            <td>status</td>
+            <td><span id="status"></span></td>
+        </tr>
+    </table>
+
+
+
+    <!-- <button id="gitResetButton">git "reset"</button> -->
+
+
+
     <script src="renderer.js"></script>
+    <!--
+    <script src="repositoryViewModel.js"></script>
+    <script>
+        ko.applyBindings(repositoryViewModel);
+    </script>
+    -->
+
+    <footer>
+        <div id="footercontent">
+            <span id="connectionstatus">&gt;&lt;</span>
+            <span>Node.js version:</span>
+            <span id="nodeVersion">
+                <script>document.write(process.versions.node)</script>
+            </span>
+        </div>
+    </footer>
+
 </body>
 
 </html>
