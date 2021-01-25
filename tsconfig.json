@@ -6,7 +6,7 @@
       "esnext.asynciterable"
     ],
     "baseUrl": ".",
-    "outDir": ".",
+    "outDir": "app",
     "moduleResolution": "node",
     "sourceMap": true,
     "removeComments": true,
