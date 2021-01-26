@@ -64,7 +64,7 @@ footer {
 }
 
 input {
-  font-family: monospace;
+  font-family: 'Cascadia Mono', monospace;
   border-style: solid;
   margin-left: -6px;
   padding-left: 6;
