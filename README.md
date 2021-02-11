@@ -12,3 +12,13 @@ Install Node.js modules with npm and rebuild with electron-rebuild.
 ```
 npm install
 ./node_modules/.bin/electron-rebuild
+
+## Todo
+
+- Show open change in current folder only
+- git stage x y z
+- git commit -m "Some message"
+- git config lfs.https://bla.git/info/lfs.locksverify true
+- git pull
+- git push
+
