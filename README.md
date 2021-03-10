@@ -22,3 +22,5 @@ npm install
 - git pull
 - git push
 
+- Autopull (wenn Pull möglich, dann Pull mit Merge (später evtl. Rebase) und automatischer Push
+
